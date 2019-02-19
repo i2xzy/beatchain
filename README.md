@@ -13,9 +13,13 @@ Use Redux for global state management and describe how you would approach testin
 - React
 - React Hooks
 - create-react-app
-- styled components
+- styled-components
+- styled-icons
 - SASS
+- react-testing-library
+- jest-dom
 - Github
+- Netlify
 
 ## Installation and running
 
