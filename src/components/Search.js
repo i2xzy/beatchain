@@ -53,10 +53,14 @@ const Search = ({ dispatch }) => {
 
   const onSubmit = e => {
     e.preventDefault();
-    getUserData('https://api.github.com/users/' + input).then(userData =>
-      dispatch({ type: 'SET_USER_DATA', value: userData })
-    );
-    setInput('');
+    getUserData('https://api.github.com/users/' + input)
+      .then(userData => {
+        dispatch({ type: 'SET_USER_DATA', payload: userData });
+        setInput('');
+      })
+      .catch(err => {
+        dispatch({ type: 'SET_ERROR_MESSAGE', payload: err.message });
+      });
   };
 
   return (
