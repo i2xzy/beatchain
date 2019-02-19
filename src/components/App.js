@@ -31,7 +31,9 @@ const App = () => {
   const reducer = (state, action) => {
     switch (action.type) {
       case 'SET_USER_DATA':
-        return { userData: action.value };
+        return { userData: action.payload };
+      case 'SET_ERROR_MESSAGE':
+        return { errorMessage: action.payload };
 
       default:
         throw new Error();
@@ -39,7 +41,8 @@ const App = () => {
   };
 
   const [state, dispatch] = useReducer(reducer, {
-    userData: undefined
+    userData: undefined,
+    errorMessage: ''
   });
 
   return (
@@ -49,6 +52,7 @@ const App = () => {
         <Search dispatch={dispatch} />
       </Header>
       {state.userData && <User user={state.userData} />}
+      {state.errorMessage && <p>{state.errorMessage}</p>}
     </Main>
   );
 };
